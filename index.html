@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Awaken 7–10s</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- BACKGROUND CLOUDS -->
+  <div class="cloud cloud-1"></div>
+  <div class="cloud cloud-2"></div>
+  <div class="cloud cloud-3"></div>
+
+  <!-- MAIN CONTAINER -->
+  <main class="container">
+
+    <!-- TOP HEADER BAR -->
+    <header class="top-bar">
+      <div class="logo-wrapper">
+        <img src="kidslogo.png" alt="Awaken Kids Logo" class="hero-logo">
+      </div>
+      <span class="subtitle-badge">Family Info Guide 2026</span>
+    </header>
+
+    <!-- LIVE SCORES (LILYPAD STANDALONE) -->
+    <div class="lilypad-frame">
+      <img src="lilypad.png" alt="Lilypad Tablet" class="lilypad-img">
+      
+      <!-- Content overlay inside the blue screen -->
+      <div class="lilypad-screen-overlay">
+        
+        <!-- Title moved inside screen -->
+        <h2 class="lilypad-title">🏆 Live Team Scores 🏆</h2>
+
+        <!-- Scores Row -->
+        <div class="scores-row">
+          <!-- RED TEAM -->
+          <div class="tablet-score-col">
+            <div class="team-badge red-badge">RED TEAM</div>
+            <div class="score-number">0</div>
+            <div class="score-label">POINTS</div>
+          </div>
+
+          <!-- VS DIVIDER -->
+          <div class="vs-pill">VS</div>
+
+          <!-- YELLOW TEAM -->
+          <div class="tablet-score-col">
+            <div class="team-badge yellow-badge">YELLOW TEAM</div>
+            <div class="score-number">0</div>
+            <div class="score-label">POINTS</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- QUICK LINKS (PLAYLIST & PHOTOS) -->
+    <section class="grid-2">
+      <!-- Spotify Link -->
+      <a href="https://open.spotify.com/playlist/4aCe4KYkMIsCXTmB9VbdJN?si=fad5e98e373a45ff" target="_blank" rel="noopener noreferrer" class="action-card green-card">
+        <span class="icon">🎵</span>
+        <h3>Playlist</h3>
+        <p>Listen to our worship playlist on Spotify!</p>
+      </a>
+
+      <!-- Photos Link -->
+      <a href="https://www.dropbox.com/request/3vzpquyhqbby0z1maemd" target="_blank" rel="noopener noreferrer" class="action-card blue-card">
+        <span class="icon">📸</span>
+        <h3>Photos</h3>
+        <p>Click to submit your peg challenge photos!</p>
+      </a>
+    </section>
+
+<!-- MEMORY VERSE CARD -->
+<section class="card verse-card">
+  <h2>This Year's Memory Verse</h2>
+  <blockquote>
+    "All people will know that you are my disciples if you love each other."<br>
+    <strong>John 13:35</strong>
+  </blockquote>
+
+  <!-- Dropdown nested inside the card -->
+  <details class="verse-dropdown">
+    <summary class="btn-primary">Learn the Memory Verse</summary>
+    <div class="video-container">
+      <iframe 
+        width="560" 
+        height="315" 
+        src="https://www.youtube.com/embed/c51ND9Hdbw0?si=rCA7TMS9VWXawJ_W" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        referrerpolicy="strict-origin-when-cross-origin" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </details>
+</section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section">
+      <h2> Frequently Asked Questions</h2>
+      <details class="faq-item">
+        <summary>When does registration open?? <span>+</span></summary>
+        <p>lol i don't know the answer to this.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How does collection work? <span>+</span></summary>
+        <p>Needs rephrasing. I'm wanting a point about kids leaving independently in the morning. .</p>
+      </details>
+      <details class="faq-item">
+        <summary>What is your SEN provision?? <span>+</span></summary>
+        <p>ugh i don't know?</p>
+      </details>
+      <details class="faq-item">
+        <summary>Who do I contact if I have a question? <span>+</span></summary>
+        <p>bother jacob yeomans and nobody else.</p>
+      </details>
+    </section>
+
+  </main>
+
+</body>
+
+</html>
