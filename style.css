@@ -416,6 +416,16 @@ body {
     color: #444;
     line-height: 1.4;
 }
+.faq-item ul {
+    margin: 8px 0 12px 20px;
+    color: #444;
+}
+
+.faq-item li {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 4px;
+}
 
 /* ==========================
    BACKGROUND CLOUDS & ANIMATION
