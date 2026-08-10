@@ -491,3 +491,11 @@ body {
   object-fit: contain;
   vertical-align: middle;
 }
+.faq-profile-img {
+    display: block;
+    width: auto;
+    max-width: 85%;
+    max-height: 45vh; /* Takes up around half the mobile screen height */
+    margin: 16px auto 8px auto;
+    object-fit: contain;
+}
