@@ -11,14 +11,14 @@ function updateTimeBasedTheme() {
     html.classList.remove('theme-morning', 'theme-sunset', 'theme-night');
 
     let currentTheme = 'theme-morning';
-    let themeColorHex = '#99e3fc';
+    let themeColorHex = '#99e3fc'; // Morning sky blue
 
     if (hour >= 20 || hour < 6) {
         currentTheme = 'theme-night';
-        themeColorHex = '#0d1b2a';
+        themeColorHex = '#0c1427'; // Matches CSS solid night blue
     } else if (hour >= 16) {
         currentTheme = 'theme-sunset';
-        themeColorHex = '#f7a072';
+        themeColorHex = '#bfa1ca'; // Matches CSS sunset top/bottom lavender
     }
 
     body.classList.add(currentTheme);
@@ -29,4 +29,10 @@ function updateTimeBasedTheme() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', updateTimeBasedTheme);
+// Run immediately when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    updateTimeBasedTheme();
+    
+    // Check every 5 minutes so theme automatically switches without manual refresh
+    setInterval(updateTimeBasedTheme, 5 * 60 * 1000);
+});
