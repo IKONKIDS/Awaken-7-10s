@@ -3,23 +3,29 @@
 function updateTimeBasedTheme() {
     const hour = new Date().getHours();
     const body = document.body;
+    const html = document.documentElement;
     const metaThemeColor = document.getElementById('theme-color-meta');
 
-    // Remove any existing theme classes first
+    // Remove old classes from both html and body
     body.classList.remove('theme-morning', 'theme-sunset', 'theme-night');
+    html.classList.remove('theme-morning', 'theme-sunset', 'theme-night');
+
+    let currentTheme = 'theme-morning';
+    let themeColorHex = '#99e3fc';
 
     if (hour >= 20 || hour < 6) {
-        // Night
-        body.classList.add('theme-night');
-        if (metaThemeColor) metaThemeColor.setAttribute('content', '#0d1b2a');
+        currentTheme = 'theme-night';
+        themeColorHex = '#0d1b2a';
     } else if (hour >= 16) {
-        // Sunset
-        body.classList.add('theme-sunset');
-        if (metaThemeColor) metaThemeColor.setAttribute('content', '#cbb4d4');
-    } else {
-        // Morning
-        body.classList.add('theme-morning');
-        if (metaThemeColor) metaThemeColor.setAttribute('content', '#99e3fc');
+        currentTheme = 'theme-sunset';
+        themeColorHex = '#f7a072';
+    }
+
+    body.classList.add(currentTheme);
+    html.classList.add(currentTheme);
+
+    if (metaThemeColor) {
+        metaThemeColor.setAttribute('content', themeColorHex);
     }
 }
 

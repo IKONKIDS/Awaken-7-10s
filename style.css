@@ -7,6 +7,11 @@
     padding: 0;
 }
 
+html {
+    background-color: #99e3fc;
+    transition: background-color 1s ease-in-out;
+}
+
 body {
     font-family: 'Nunito', system-ui, -apple-system, sans-serif;
     color: #173f84;
@@ -20,6 +25,7 @@ body {
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
+    background-attachment: scroll; /* Fixes iOS Safari bounce background issues */
 }
 
 /* ==========================
@@ -27,14 +33,13 @@ body {
 ========================== */
 
 /* Daytime / Morning Sky */
+html.theme-morning,
 body.theme-morning {
     background-color: #99e3fc; /* Soft sky blue */
 }
 
-/* Opacity set only on the parent container */
 body.theme-morning .cloud {
     opacity: 0.85;
-    filter: brightness(1);
 }
 
 body.theme-morning .cloud,
@@ -43,47 +48,56 @@ body.theme-morning .cloud::after {
     background-color: #ffffff;
 }
 
-/* Sunset */
+/* Sunset Theme */
+html.theme-sunset,
 body.theme-sunset {
-    background-color: #cbb4d4; /* Matches top gradient of sunset.png */
-    background-image: url('sunset.png'); /* Change to .jpg if using JPEG */
+    background-color: #f7a072; /* Warm orange matching top of sunset.png */
+    background-image: url('sunset.png');
 }
 
-/* Keep opacity or color filter on the main cloud container only */
 body.theme-sunset .cloud {
     opacity: 0.85;
-    filter: brightness(0.85) sepia(0.3) hue-rotate(-10deg) saturate(1.8);
 }
 
-/* Ensure background color remains solid white so the filter handles the tint uniformly */
+/* Warm peach tinted clouds for sunset contrast */
 body.theme-sunset .cloud,
 body.theme-sunset .cloud::before,
 body.theme-sunset .cloud::after {
-    background-color: #ffffff;
+    background-color: #ffe6db;
 }
 
-/* Night */
+/* Night Theme */
+html.theme-night,
 body.theme-night {
     background-color: #0d1b2a; /* Matches top dark blue of night.png */
-    background-image: url('night.png'); /* Change to .jpg if using JPEG */
-    color: #ffffff; /* White text for contrast */
+    background-image: url('night.png');
+    color: #ffffff; /* White default text for dark background */
 }
 
-/* Base cloud container handles opacity so overlapping circles blend seamlessly */
 body.theme-night .cloud {
     opacity: 0.85; 
-    filter: none;
 }
 
-/* Individual cloud pieces stay 100% opaque relative to their parent container */
+/* Deep slate-purple clouds for night sky */
 body.theme-night .cloud,
 body.theme-night .cloud::before,
 body.theme-night .cloud::after {
-    background-color: #1e2942; /* Deep slate-blue */
+    background-color: #2c3a5e;
+}
+
+/* Keep card & FAQ content readable against light background cards during Night mode */
+body.theme-night .card,
+body.theme-night .faq-item,
+body.theme-night .faq-item summary,
+body.theme-night .faq-item p,
+body.theme-night .faq-item li {
+    color: #173f84;
 }
 
 /* Central container */
 .container {
+    position: relative;
+    z-index: 2; /* Sits above background clouds */
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
@@ -398,7 +412,7 @@ body.theme-night .cloud::after {
 
 .btn-primary {
     background: #396cad; /* Tablet Blue */
-    color: white;
+    color: white !important;
     padding: 14px 20px;
     border-radius: 999px;
     font-family: 'Nunito', sans-serif;
@@ -510,11 +524,11 @@ body.theme-night .cloud::after {
     position: fixed; 
     background: #ffffff;
     border-radius: 100px;
-    z-index: -1; 
+    z-index: 1; /* Sits above body background, below .container */
     opacity: 0.85;
     pointer-events: none;
     animation: floatCloud linear infinite; 
-    transition: background-color 1s ease-in-out, opacity 1s ease-in-out, filter 1s ease-in-out;
+    transition: background-color 1s ease-in-out, opacity 1s ease-in-out;
 }
 
 .cloud::before,
