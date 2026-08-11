@@ -8,7 +8,7 @@
 }
 
 html {
-    height: 100%;
+    min-height: 100%;
     background-color: #99e3fc;
     transition: background-color 1s ease-in-out;
 }
@@ -21,26 +21,14 @@ body {
     padding-bottom: 60px;
     overflow-x: hidden;
     position: relative;
+    transition: background 1s ease-in-out;
 }
 
-/* Dedicated fixed background layer for Safari compatibility */
+/* Clear pseudo-element layer so it doesn't block gradients */
 body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    min-width: 100vw;
-    min-height: 100dvh;
-    z-index: 0; /* Behind clouds (z-index: 1) and container (z-index: 2) */
-    background-size: 100% 100%; /* Stretches background on all screens */
-    background-position: center top;
-    background-repeat: no-repeat;
-    transition: background-image 1s ease-in-out, background-color 1s ease-in-out;
+    content: none;
 }
 
-/* Ensure footers do not inject solid background colors */
 footer, .footer {
     background-color: transparent;
 }
@@ -51,9 +39,9 @@ footer, .footer {
 
 /* Daytime / Morning Sky */
 html.theme-morning,
-body.theme-morning,
-body.theme-morning::before {
+body.theme-morning {
     background-color: #99e3fc;
+    background-image: none;
 }
 
 body.theme-morning .cloud {
@@ -66,16 +54,13 @@ body.theme-morning .cloud::after {
     background-color: #ffffff;
 }
 
-/* Sunset Theme (Seamless Eyedropper Gradient) */
+/* Sunset Theme (Direct Seamless Gradient) */
 html.theme-sunset {
-    background-color: #ffaf1d; /* Bottom golden yellow for overscroll */
+    background-color: #ffaf1d; /* Matches bottom golden glow for overscroll */
 }
 
 body.theme-sunset {
-    background-color: #bfa1ca; /* Top soft lavender for top bounce */
-}
-
-body.theme-sunset::before {
+    background-color: #ffaf1d;
     background-image: linear-gradient(
         180deg, 
         #bfa1ca 0%,   /* Soft lavender top */
@@ -84,6 +69,8 @@ body.theme-sunset::before {
         #f5a87b 72%,  /* Lower coral */
         #ffaf1d 100%  /* Bottom golden yellow */
     );
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 body.theme-sunset .cloud {
@@ -99,15 +86,11 @@ body.theme-sunset .cloud::after {
 /* Night Theme (Kept as image for stars) */
 html.theme-night,
 body.theme-night {
-    background-color: #0d1b2a; /* Dark blue background fallback for night image */
-}
-
-body.theme-night::before {
     background-color: #0d1b2a;
     background-image: url('night.png');
-}
-
-body.theme-night {
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
     color: #ffffff;
 }
 
