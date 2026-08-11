@@ -16,16 +16,26 @@ body {
     font-family: 'Nunito', system-ui, -apple-system, sans-serif;
     color: #173f84;
     min-height: 100vh;
+    min-height: 100dvh; /* Adapts to Safari mobile address bar */
     padding-bottom: 60px;
     overflow-x: hidden;
-    background-color: #99e3fc; /* Default fallback background */
-    
-    /* Background Image setup for theme transitions */
-    transition: background 1s ease-in-out, background-color 1s ease-in-out, color 0.3s ease;
+    position: relative;
+}
+
+/* Dedicated fixed background layer for Safari compatibility */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 0; /* Behind clouds (z-index: 1) and container (z-index: 2) */
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
-    background-attachment: scroll; /* Fixes iOS Safari bounce background issues */
+    transition: background-image 1s ease-in-out, background-color 1s ease-in-out;
 }
 
 /* ==========================
@@ -34,8 +44,9 @@ body {
 
 /* Daytime / Morning Sky */
 html.theme-morning,
-body.theme-morning {
-    background-color: #99e3fc; /* Soft sky blue */
+body.theme-morning,
+body.theme-morning::before {
+    background-color: #99e3fc;
 }
 
 body.theme-morning .cloud {
@@ -51,7 +62,11 @@ body.theme-morning .cloud::after {
 /* Sunset Theme */
 html.theme-sunset,
 body.theme-sunset {
-    background-color: #f7a072; /* Warm orange matching top of sunset.png */
+    background-color: #2b1b3d; /* Matches top sky color to fix Safari overscroll bounce */
+}
+
+body.theme-sunset::before {
+    background-color: #2b1b3d;
     background-image: url('sunset.png');
 }
 
@@ -59,7 +74,6 @@ body.theme-sunset .cloud {
     opacity: 0.85;
 }
 
-/* Warm peach tinted clouds for sunset contrast */
 body.theme-sunset .cloud,
 body.theme-sunset .cloud::before,
 body.theme-sunset .cloud::after {
@@ -69,16 +83,22 @@ body.theme-sunset .cloud::after {
 /* Night Theme */
 html.theme-night,
 body.theme-night {
-    background-color: #0d1b2a; /* Matches top dark blue of night.png */
+    background-color: #0d1b2a;
+}
+
+body.theme-night::before {
+    background-color: #0d1b2a;
     background-image: url('night.png');
-    color: #ffffff; /* White default text for dark background */
+}
+
+body.theme-night {
+    color: #ffffff;
 }
 
 body.theme-night .cloud {
     opacity: 0.85; 
 }
 
-/* Deep slate-purple clouds for night sky */
 body.theme-night .cloud,
 body.theme-night .cloud::before,
 body.theme-night .cloud::after {
