@@ -33,7 +33,7 @@ body::before {
     min-width: 100vw;
     min-height: 100dvh;
     z-index: 0; /* Behind clouds (z-index: 1) and container (z-index: 2) */
-    background-size: 100% 100%; /* Stretches background image to fill edges on all screens */
+    background-size: 100% 100%; /* Stretches background image/gradient on all screens */
     background-position: center top;
     background-repeat: no-repeat;
     transition: background-image 1s ease-in-out, background-color 1s ease-in-out;
@@ -60,15 +60,33 @@ body.theme-morning .cloud::after {
     background-color: #ffffff;
 }
 
-/* Sunset Theme */
+/* Sunset Theme (CSS Gradient - Safari Optimized) */
 html.theme-sunset,
 body.theme-sunset {
-    background-color: #2b1b3d;
+    background-color: #2b1b3d; /* Matches top gradient stop for overscroll */
+}
+
+/* Sunset Theme (CSS Gradient - Seamless Mobile Setup) */
+html.theme-sunset {
+    /* Matches bottom golden-yellow so overscrolling at the bottom is seamless */
+    background-color: #ffaf1d; 
+}
+
+body.theme-sunset {
+    /* Matches top lavender so pulling down at the top is seamless */
+    background-color: #bfa1ca; 
 }
 
 body.theme-sunset::before {
-    background-color: #2b1b3d;
-    background-image: url('sunset.png');
+    /* Stretches to fill 100% of the active screen without bars */
+    background-image: linear-gradient(
+        180deg, 
+        #bfa1ca 0%,   /* Top sky */
+        #d8a2b5 28%,  /* Upper middle */
+        #e9a7a0 50%,  /* Middle peach */
+        #f5a87b 72%,  /* Lower coral */
+        #ffaf1d 100%  /* Bottom glow */
+    );
 }
 
 body.theme-sunset .cloud {
@@ -81,10 +99,10 @@ body.theme-sunset .cloud::after {
     background-color: #ffe6db;
 }
 
-/* Night Theme */
+/* Night Theme (Kept as image for stars) */
 html.theme-night,
 body.theme-night {
-    background-color: #0d1b2a;
+    background-color: #0d1b2a; /* Dark blue background fallback for night image */
 }
 
 body.theme-night::before {
