@@ -8,6 +8,7 @@
 }
 
 html {
+    height: 100%;
     background-color: #99e3fc;
     transition: background-color 1s ease-in-out;
 }
@@ -33,10 +34,15 @@ body::before {
     min-width: 100vw;
     min-height: 100dvh;
     z-index: 0; /* Behind clouds (z-index: 1) and container (z-index: 2) */
-    background-size: 100% 100%; /* Stretches background image/gradient on all screens */
+    background-size: 100% 100%; /* Stretches background on all screens */
     background-position: center top;
     background-repeat: no-repeat;
     transition: background-image 1s ease-in-out, background-color 1s ease-in-out;
+}
+
+/* Ensure footers do not inject solid background colors */
+footer, .footer {
+    background-color: transparent;
 }
 
 /* ==========================
@@ -60,32 +66,23 @@ body.theme-morning .cloud::after {
     background-color: #ffffff;
 }
 
-/* Sunset Theme (CSS Gradient - Safari Optimized) */
-html.theme-sunset,
-body.theme-sunset {
-    background-color: #2b1b3d; /* Matches top gradient stop for overscroll */
-}
-
-/* Sunset Theme (CSS Gradient - Seamless Mobile Setup) */
+/* Sunset Theme (Seamless Eyedropper Gradient) */
 html.theme-sunset {
-    /* Matches bottom golden-yellow so overscrolling at the bottom is seamless */
-    background-color: #ffaf1d; 
+    background-color: #ffaf1d; /* Bottom golden yellow for overscroll */
 }
 
 body.theme-sunset {
-    /* Matches top lavender so pulling down at the top is seamless */
-    background-color: #bfa1ca; 
+    background-color: #bfa1ca; /* Top soft lavender for top bounce */
 }
 
 body.theme-sunset::before {
-    /* Stretches to fill 100% of the active screen without bars */
     background-image: linear-gradient(
         180deg, 
-        #bfa1ca 0%,   /* Top sky */
-        #d8a2b5 28%,  /* Upper middle */
-        #e9a7a0 50%,  /* Middle peach */
+        #bfa1ca 0%,   /* Soft lavender top */
+        #d8a2b5 28%,  /* Upper dusty pink */
+        #e9a7a0 50%,  /* Middle warm peach */
         #f5a87b 72%,  /* Lower coral */
-        #ffaf1d 100%  /* Bottom glow */
+        #ffaf1d 100%  /* Bottom golden yellow */
     );
 }
 
