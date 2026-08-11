@@ -9,11 +9,75 @@
 
 body {
     font-family: 'Nunito', system-ui, -apple-system, sans-serif;
-    background-color: #99e3fc; /* Soft sky blue */
     color: #173f84;
     min-height: 100vh;
     padding-bottom: 60px;
     overflow-x: hidden;
+    background-color: #99e3fc; /* Default fallback background */
+    
+    /* Background Image setup for theme transitions */
+    transition: background 1s ease-in-out, background-color 1s ease-in-out, color 0.3s ease;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* ==========================
+   TIME-BASED THEMES
+========================== */
+
+/* Daytime / Morning Sky */
+body.theme-morning {
+    background-color: #99e3fc; /* Soft sky blue */
+}
+
+body.theme-morning .cloud,
+body.theme-morning .cloud::before,
+body.theme-morning .cloud::after {
+    background-color: #ffffff;
+    opacity: 0.85;
+}
+
+body.theme-morning .cloud {
+    filter: brightness(1);
+}
+
+/* Sunset */
+body.theme-sunset {
+    background-image: url('sunset.png'); /* Change to .jpg if using JPEG */
+}
+
+/* Keep opacity or color filter on the main cloud container only */
+body.theme-sunset .cloud {
+    opacity: 0.85;
+    filter: brightness(0.85) sepia(0.3) hue-rotate(-10deg) saturate(1.8);
+}
+
+/* Ensure background color remains solid white so the filter handles the tint uniformly */
+body.theme-sunset .cloud,
+body.theme-sunset .cloud::before,
+body.theme-sunset .cloud::after {
+    background-color: #ffffff;
+}
+
+/* Night */
+body.theme-night {
+    background-image: url('night.png'); /* Change to .jpg if using JPEG */
+    color: #ffffff; /* White text for contrast */
+}
+
+/* Base cloud container handles opacity so overlapping circles blend seamlessly */
+body.theme-night .cloud {
+    opacity: 0.85; 
+    filter: none;
+}
+
+/* Individual cloud pieces stay 100% opaque relative to their parent container */
+body.theme-night .cloud,
+body.theme-night .cloud::before,
+body.theme-night .cloud::after {
+    background-color: #1e2942; /* Deep slate-blue */
 }
 
 /* Central container */
@@ -416,6 +480,7 @@ body {
     color: #444;
     line-height: 1.4;
 }
+
 .faq-item ul {
     margin: 8px 0 12px 20px;
     color: #444;
@@ -425,6 +490,15 @@ body {
     font-size: 0.95rem;
     line-height: 1.4;
     margin-bottom: 4px;
+}
+
+.faq-profile-img {
+    display: block;
+    width: auto;
+    max-width: 85%;
+    max-height: 45vh; /* Takes up around half the mobile screen height */
+    margin: 16px auto 8px auto;
+    object-fit: contain;
 }
 
 /* ==========================
@@ -438,6 +512,7 @@ body {
     opacity: 0.85;
     pointer-events: none;
     animation: floatCloud linear infinite; 
+    transition: background-color 1s ease-in-out, opacity 1s ease-in-out, filter 1s ease-in-out;
 }
 
 .cloud::before,
@@ -446,6 +521,7 @@ body {
     position: absolute;
     background: #ffffff;
     border-radius: 50%;
+    transition: background-color 1s ease-in-out, opacity 1s ease-in-out;
 }
 
 .cloud-1 {
@@ -485,17 +561,10 @@ body {
         transform: translateX(100vw);  
     }
 }
+
 .icon-img {
-  width: 2.5em;
-  height: 2.5em;
-  object-fit: contain;
-  vertical-align: middle;
-}
-.faq-profile-img {
-    display: block;
-    width: auto;
-    max-width: 85%;
-    max-height: 45vh; /* Takes up around half the mobile screen height */
-    margin: 16px auto 8px auto;
+    width: 2.5em;
+    height: 2.5em;
     object-fit: contain;
+    vertical-align: middle;
 }
