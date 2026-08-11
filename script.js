@@ -3,21 +3,24 @@
 function updateTimeBasedTheme() {
     const hour = new Date().getHours();
     const body = document.body;
+    const metaThemeColor = document.getElementById('theme-color-meta');
 
-    // Remove any existing theme classes first to prevent conflicts
+    // Remove any existing theme classes first
     body.classList.remove('theme-morning', 'theme-sunset', 'theme-night');
 
     if (hour >= 20 || hour < 6) {
-        // 8:00 PM - 5:59 AM -> Night
+        // Night
         body.classList.add('theme-night');
+        if (metaThemeColor) metaThemeColor.setAttribute('content', '#0d1b2a');
     } else if (hour >= 16) {
-        // 4:00 PM - 7:59 PM -> Sunset
+        // Sunset
         body.classList.add('theme-sunset');
+        if (metaThemeColor) metaThemeColor.setAttribute('content', '#cbb4d4');
     } else {
-        // 6:00 AM - 3:59 PM -> Morning
+        // Morning
         body.classList.add('theme-morning');
+        if (metaThemeColor) metaThemeColor.setAttribute('content', '#99e3fc');
     }
 }
 
-// Run the function as soon as the DOM is ready
 document.addEventListener('DOMContentLoaded', updateTimeBasedTheme);

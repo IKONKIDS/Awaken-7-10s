@@ -18,8 +18,7 @@ body {
     /* Background Image setup for theme transitions */
     transition: background 1s ease-in-out, background-color 1s ease-in-out, color 0.3s ease;
     background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
+    background-position: center top;
     background-repeat: no-repeat;
 }
 
@@ -46,6 +45,7 @@ body.theme-morning .cloud::after {
 
 /* Sunset */
 body.theme-sunset {
+    background-color: #cbb4d4; /* Matches top gradient of sunset.png */
     background-image: url('sunset.png'); /* Change to .jpg if using JPEG */
 }
 
@@ -64,6 +64,7 @@ body.theme-sunset .cloud::after {
 
 /* Night */
 body.theme-night {
+    background-color: #0d1b2a; /* Matches top dark blue of night.png */
     background-image: url('night.png'); /* Change to .jpg if using JPEG */
     color: #ffffff; /* White text for contrast */
 }
