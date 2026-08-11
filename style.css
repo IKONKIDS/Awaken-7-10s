@@ -32,15 +32,16 @@ body.theme-morning {
     background-color: #99e3fc; /* Soft sky blue */
 }
 
+/* Opacity set only on the parent container */
+body.theme-morning .cloud {
+    opacity: 0.85;
+    filter: brightness(1);
+}
+
 body.theme-morning .cloud,
 body.theme-morning .cloud::before,
 body.theme-morning .cloud::after {
     background-color: #ffffff;
-    opacity: 0.85;
-}
-
-body.theme-morning .cloud {
-    filter: brightness(1);
 }
 
 /* Sunset */
@@ -521,7 +522,7 @@ body.theme-night .cloud::after {
     position: absolute;
     background: #ffffff;
     border-radius: 50%;
-    transition: background-color 1s ease-in-out, opacity 1s ease-in-out;
+    transition: background-color 1s ease-in-out;
 }
 
 .cloud-1 {
