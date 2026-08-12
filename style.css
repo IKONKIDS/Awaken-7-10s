@@ -106,7 +106,7 @@ body.theme-night {
         radial-gradient(1.5px 1.5px at 10% 50%, #ffffff 100%, transparent) !important;
     background-repeat: repeat !important;
     background-size: 350px 350px !important; /* Tiles cleanly across any screen size */
-    background-attachment: scroll !important;
+    background-attachment: fixed !important; /* Locks stars in place during scroll */
 }
 
 body.theme-night .cloud {
