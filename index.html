@@ -93,7 +93,7 @@
     
     </section>
 
-    <!-- MEMORY VERSE CARD -->
+<!-- MEMORY VERSE CARD -->
     <section class="card verse-card">
       <h2>This Year's Memory Verse</h2>
       <blockquote>
@@ -101,20 +101,14 @@
         <strong>John 13:35</strong>
       </blockquote>
 
-      <!-- Dropdown nested inside the card -->
+      <!-- Dropdown -->
       <details class="verse-dropdown">
-        <summary class="btn-primary">Learn the Memory Verse</summary>
-        <div class="video-container">
-          <iframe 
-            width="560" 
-            height="315" 
-            src="https://www.youtube.com/embed/c51ND9Hdbw0?si=rCA7TMS9VWXawJ_W" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen>
-          </iframe>
+        <summary class="btn-primary">Click to Learn the Memory Verse!</summary>
+        <div class="memory-video-wrapper">
+          <video controls playsinline preload="metadata">
+            <source src="Memory Verse.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
       </details>
     </section>

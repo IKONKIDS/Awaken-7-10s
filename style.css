@@ -366,7 +366,6 @@ body.theme-night .faq-item li {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.025); }
 }
-}
 
 .feedback-btn:hover {
     transform: translateY(-2px);
@@ -659,4 +658,25 @@ body.theme-night .faq-item li {
 }
 .hidden {
     display: none !important;
+}
+/* ==========================
+   MEMORY VERSE NATIVE VIDEO
+========================== */
+.memory-video-wrapper {
+    width: 100%;
+    margin-top: 14px;
+    border-radius: 18px;
+    overflow: hidden;
+    background-color: #000000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 3px solid #ffffff;
+}
+
+.memory-video-wrapper video {
+    display: block;
+    width: 100%;
+    height: auto; /* Lets the video scale naturally without cropping */
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 14px;
 }
