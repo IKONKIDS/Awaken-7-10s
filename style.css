@@ -641,34 +641,31 @@ body.theme-night .faq-item li {
    UNIVERSAL MOBILE VIDEO & DROPDOWN FIX
 ========================================== */
 
-/* 1. Ensure the dropdown container expands cleanly */
 .verse-card .verse-dropdown {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
 }
 
-/* 2. Constrain the outer video wrapper */
 .memory-video-wrapper {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
     margin-top: 14px;
     border-radius: 18px;
-    overflow: hidden;
+    overflow: hidden !important;
     background-color: #000000;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     border: 3px solid #ffffff;
 }
 
-/* 3. Force the video element to scale cleanly on all screens */
 .memory-video-wrapper video {
     display: block !important;
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
-    max-height: 60vh; /* Keeps video proportional on shorter mobile screens */
-    object-fit: contain;
+    aspect-ratio: 16 / 9; /* Guarantees box layout before video downloads */
+    object-fit: contain !important;
     border-radius: 14px;
     box-sizing: border-box !important;
 }
