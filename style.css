@@ -335,6 +335,81 @@ body.theme-night .faq-item li {
 }
 
 /* ==========================
+   PRAYER DROPDOWN BUTTON
+========================== */
+.prayer-dropdown {
+    width: 100%;
+    max-width: 480px;
+    margin: -4px auto 0 auto;
+}
+
+.prayer-dropdown summary {
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+}
+
+.prayer-dropdown summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Button styled identical to feedback-btn (no pulse) */
+/* Update .prayer-btn in style.css */
+.prayer-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Pushes arrow to far right */
+    width: 100%;
+    padding: 16px 22px;
+    background-color: #fff9e6; /* Light yellow background */
+    color: #173f84;            /* Dark blue text */
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    border: 3px solid #f1a92a;  /* Yellow border matching FAQ cards */
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+}
+
+.prayer-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Content box revealing under the button */
+.prayer-dropdown-content {
+    margin-top: 10px;
+    padding: 20px;
+    background-color: #fff9e6;
+    border: 3px solid #f1a92a;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    color: #173f84;
+}
+
+.prayer-intro {
+    margin: 0 0 12px 0;
+    font-size: 0.95rem;
+    color: #173f84;
+    line-height: 1.4;
+}
+
+.prayer-form-link {
+    display: inline-block;
+    color: #396cad;
+    font-weight: 800;
+    text-decoration: underline;
+    margin-bottom: 8px;
+}
+
+.prayer-note {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+/* ==========================
    FEEDBACK BUTTON
 ========================== */
 .feedback-btn {
@@ -668,4 +743,77 @@ body.theme-night .faq-item li {
     object-fit: contain !important;
     border-radius: 14px;
     box-sizing: border-box !important;
+}
+/* ==========================
+   PRAYER CARD (MEMORY VERSE STYLE)
+========================== */
+.prayer-card {
+    background: #fff9e6; /* Soft warm yellow */
+    border: 4px solid #ffffff; 
+    outline: 3px solid #f1a92a; /* Inner yellow accent */
+    text-align: center;
+    border-radius: 20px 245px 20px 255px/255px 20px 245px 20px; /* Playful organic shape */
+}
+
+.prayer-card h2 {
+    text-align: center;
+    margin-bottom: 8px;
+    color: #173f84;
+}
+
+.prayer-card .prayer-intro {
+    text-align: center;
+    margin: 0 auto 16px;
+    line-height: 1.5;
+    color: #173f84;
+    font-size: 0.95rem;
+}
+
+.prayer-card .prayer-dropdown-content {
+    margin-top: 14px;
+    padding: 16px;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 2px dashed #f1a92a;
+    text-align: left;
+}
+
+.prayer-questions {
+    margin: 0 0 12px 20px;
+    color: #173f84;
+}
+
+.prayer-questions li {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+.prayer-card .prayer-note {
+    font-size: 0.85rem;
+    color: #555;
+    font-style: italic;
+    text-align: center;
+    margin: 0;
+}
+/* ==========================
+   FAQ PILL TITLE
+========================== */
+.faq-pill-title {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    margin: 8px auto 4px auto;
+    padding: 14px 20px;
+    background-color: #f1a82af9; /* Vibrant Golden Accent */
+    color: #ffffff;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 900;
+    text-align: center;
+    border-radius: 999px;
+    border: 4px solid #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    box-sizing: border-box;
 }
