@@ -817,3 +817,15 @@ body.theme-night .faq-item li {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
     box-sizing: border-box;
 }
+/* ==========================
+   RAIN BACKGROUND CANVAS
+========================== */
+#rainCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Allows clicks to pass through to your buttons */
+    z-index: 0;           /* Sits behind cards and interactive elements */
+}
