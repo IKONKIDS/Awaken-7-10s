@@ -1,4 +1,4 @@
-// Awaken 7–10s Theme Switcher
+// Awaken Time-Based Theme Switcher (4 Time Blocks)
 
 function updateTimeBasedTheme() {
     const hour = new Date().getHours();
@@ -7,18 +7,22 @@ function updateTimeBasedTheme() {
     const metaThemeColor = document.getElementById('theme-color-meta');
 
     // Remove old classes from both html and body
-    body.classList.remove('theme-morning', 'theme-sunset', 'theme-night');
-    html.classList.remove('theme-morning', 'theme-sunset', 'theme-night');
+    const themeClasses = ['theme-morning', 'theme-afternoon', 'theme-sunset', 'theme-night'];
+    body.classList.remove(...themeClasses);
+    html.classList.remove(...themeClasses);
 
     let currentTheme = 'theme-morning';
-    let themeColorHex = '#99e3fc'; // Morning sky blue
+    let themeColorHex = '#99e3fc'; // Morning sky blue (06:00 - 11:59)
 
     if (hour >= 20 || hour < 6) {
         currentTheme = 'theme-night';
-        themeColorHex = '#0c1427'; // Matches CSS solid night blue
-    } else if (hour >= 16) {
+        themeColorHex = '#0c1427'; // Dark night blue (20:00 - 05:59)
+    } else if (hour >= 17) {
         currentTheme = 'theme-sunset';
-        themeColorHex = '#bfa1ca'; // Matches CSS sunset top/bottom lavender
+        themeColorHex = '#bfa1ca'; // Sunset lavender/orange (17:00 - 19:59)
+    } else if (hour >= 12) {
+        currentTheme = 'theme-afternoon';
+        themeColorHex = '#70c5ff'; // Vibrant afternoon blue (12:00 - 16:59)
     }
 
     body.classList.add(currentTheme);
@@ -36,6 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Check every 5 minutes so theme automatically switches without manual refresh
     setInterval(updateTimeBasedTheme, 5 * 60 * 1000);
 });
+
+// Canvas Rain Animation
+
 const canvas = document.getElementById('rainCanvas');
 const ctx = canvas.getContext('2d');
 
@@ -49,7 +56,7 @@ window.addEventListener('resize', () => {
 });
 
 // Drop Configuration
-const dropCount = 120; // Adjust for more or fewer rain drops
+const dropCount = 120;
 const drops = [];
 
 for (let i = 0; i < dropCount; i++) {
@@ -65,20 +72,24 @@ for (let i = 0; i < dropCount; i++) {
 function renderRain() {
   ctx.clearRect(0, 0, width, height);
 
-  // Check if your body is in dark mode (adjust class check as needed)
-  const isNightTheme = document.body.classList.contains('theme-night');
-  
-  // Dynamic rain color based on theme
-  const strokeColor = isNightTheme 
-    ? 'rgba(180, 225, 255, '  // Bright blue-white for dark themes
-    : 'rgba(55, 125, 210, ';  // Deep blue for light sky themes
+  const body = document.body;
+  let strokeColor = 'rgba(55, 125, 210, '; // Default Morning rain color
+
+  // Dynamic rain color based on active theme
+  if (body.classList.contains('theme-night')) {
+    strokeColor = 'rgba(180, 225, 255, '; // Bright blue-white for contrast on dark
+  } else if (body.classList.contains('theme-sunset')) {
+    strokeColor = 'rgba(235, 210, 240, '; // Subtle golden-lavender tint
+  } else if (body.classList.contains('theme-afternoon')) {
+    strokeColor = 'rgba(35, 95, 175, '; // Slightly deeper blue for bright skies
+  }
 
   for (let i = 0; i < drops.length; i++) {
     const d = drops[i];
 
     ctx.beginPath();
     ctx.moveTo(d.x, d.y);
-    ctx.lineTo(d.x - 2, d.y + d.length); // Slight angle to rain
+    ctx.lineTo(d.x - 2, d.y + d.length);
     ctx.strokeStyle = strokeColor + d.opacity + ')';
     ctx.lineWidth = 1.5;
     ctx.lineCap = 'round';
@@ -86,7 +97,7 @@ function renderRain() {
 
     // Move drop down
     d.y += d.speed;
-    d.x -= 0.5; // Matches slight angle tilt
+    d.x -= 0.5;
 
     // Reset drop when off screen
     if (d.y > height) {
